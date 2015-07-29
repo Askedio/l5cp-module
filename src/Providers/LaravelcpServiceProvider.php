@@ -34,9 +34,9 @@ class LaravelcpServiceProvider extends ServiceProvider
       require realpath(__DIR__.'/../Http/routes.php');
     }
 
-    $this->loadTranslationsFrom(realpath(__DIR__.'/../Resources/Lang'), 'lcp');
+    $this->loadTranslationsFrom(realpath(__DIR__.'/../Resources/Lang'), 'l5cp-module');
 
-    $this->loadViewsFrom(realpath(__DIR__.'/../Resources/Views'), 'lcp');
+    $this->loadViewsFrom(realpath(__DIR__.'/../Resources/Views'), 'l5cp-module');
 
     $this->publishes([
       realpath(__DIR__.'/../Resources/Views') => base_path('resources/views/vendor/askedio/laravelcp'),
