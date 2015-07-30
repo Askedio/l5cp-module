@@ -8,6 +8,8 @@ use Lang;
 use View;
 use Illuminate\Support\ServiceProvider;
 
+use Askedio\Laravelcp\Helpers\NavigationHelper;
+
 class LaravelcpServiceProvider extends ServiceProvider
 {
   /**
@@ -17,6 +19,9 @@ class LaravelcpServiceProvider extends ServiceProvider
    */
   public function register()
   {
+
+
+
 
   }
 
@@ -28,7 +33,7 @@ class LaravelcpServiceProvider extends ServiceProvider
   public function boot()
   {
 
-
+    NavigationHelper::Add(['nav' => 'main', 'sort' => '1', 'link' => url('/module'), 'title' => 'Module', 'icon' => 'fa-cubes']);
 
     if (! $this->app->routesAreCached()) {
       require realpath(__DIR__.'/../Http/routes.php');
