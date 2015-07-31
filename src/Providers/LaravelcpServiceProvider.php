@@ -9,6 +9,7 @@ use View;
 use Illuminate\Support\ServiceProvider;
 
 use Askedio\Laravelcp\Helpers\NavigationHelper;
+use Askedio\Laravelcp\Helpers\HookHelper;
 
 class LaravelcpServiceProvider extends ServiceProvider
 {
@@ -34,6 +35,7 @@ class LaravelcpServiceProvider extends ServiceProvider
   {
 
     NavigationHelper::Add(['nav' => 'main', 'sort' => '1', 'link' => url('/module'), 'title' => 'Module', 'icon' => 'fa-cubes']);
+    HookHelper::Add(['hook' => 'dashboard', 'template' => 'l5cp-module::dashboard.welcome', 'sort' => '1']);
 
     if (! $this->app->routesAreCached()) {
       require realpath(__DIR__.'/../Http/routes.php');
@@ -56,11 +58,11 @@ class LaravelcpServiceProvider extends ServiceProvider
     ], 'config');
 
     $this->publishes([
-      realpath(__DIR__.'/../Resources/Migrations') => database_path('migrations')
+      realpath(__DIR__.'/../Database/Migrations') => database_path('migrations')
     ], 'migrations');
 
     $this->publishes([
-      realpath(__DIR__.'/../Resources/Seeds') => database_path('seeds')
+      realpath(__DIR__.'/../Database/Seeds') => database_path('seeds')
     ], 'seeds');
 
   }
